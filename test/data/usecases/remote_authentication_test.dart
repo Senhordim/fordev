@@ -33,6 +33,7 @@ void main() {
   setUp(() {
     httpClient = HttpClientSpy();
     url = faker.internet.httpUrl();
+
     remoteAuthentication = RemoteAuthentication(
       httpClient: httpClient,
       url: url,
@@ -41,7 +42,6 @@ void main() {
 
   test('Should call HttpClient with correct values', () async {
     await remoteAuthentication.auth();
-    // expect(actual, matcher)
     verify(httpClient.request(
       url: url,
       method: 'post',
